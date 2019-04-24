@@ -91,8 +91,8 @@ namespace Anova.Controllers
 
             double c = ViewBag.alts[ViewBag.Alt1-1] - ViewBag.alts[ViewBag.Alt2-1];
             var tdist = new TDistribution(ViewBag.k * (ViewBag.n - 1));
-            
-            double div = tdist.InverseCDF((1-ViewBag.Certainty)/2);
+            double alpha = 1 - ViewBag.Certainty;
+            double div = tdist.InverseCDF(1-alpha/2)*ViewBag.Sc;
             ViewBag.LowLimit = c - div;
             ViewBag.HighLimit = c + div;
 
