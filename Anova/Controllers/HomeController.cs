@@ -90,7 +90,7 @@ namespace Anova.Controllers
             ViewBag.alts = alts.Split(',').Select(x => double.Parse(x)).ToArray();
 
             double c = ViewBag.alts[ViewBag.Alt1-1] - ViewBag.alts[ViewBag.Alt2-1];
-            var tdist = new TDistribution(ViewBag.k * ViewBag.n - 1);
+            var tdist = new TDistribution(ViewBag.k * (ViewBag.n - 1));
             
             double div = tdist.InverseCDF((1-ViewBag.Certainty)/2);
             ViewBag.LowLimit = c - div;
