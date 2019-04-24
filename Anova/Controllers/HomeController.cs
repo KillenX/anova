@@ -66,7 +66,7 @@ namespace Anova.Controllers
             ViewBag.SSE = sse;
             ViewBag.SSA = ssa;
             ViewBag.Ftest = Sa2 / Se2;
-            ViewBag.Sc = Math.Pow((2 * Math.Pow(Se2, 0.5) / (k * n)), 0.5);
+            ViewBag.Sc = Math.Pow(((2 *Se2) / (k * n)), 0.5);
             ViewBag.alts = alts;
             ViewBag.n = n;
             ViewBag.k = k;
