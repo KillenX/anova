@@ -1,0 +1,19 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <form action=@Url.Action("Calculator","Home") method="post">
+        <div class="form-group">
+            <label for="alt_no">Number of alternatives:</label>
+            <input name="AltNo" type="number" id="alt_no" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label for="measure_no">Number of measurements</label>
+            <input id="measure_no" name="MeasureNo" type="number" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-default">Go to calculator</button>
+        </div>
+    </form>
+</div>
