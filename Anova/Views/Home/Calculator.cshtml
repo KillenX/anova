@@ -1,0 +1,43 @@
+﻿
+@{
+    ViewBag.Title = "Calculator";
+}
+
+<h2>Calculator for @ViewBag.AltNo alternatives and @ViewBag.MeasureNo measurements per alternative</h2>
+
+<form action=@Url.Action("Result","Home") method="post">
+    <table class="table">
+        <tr>
+            <th>Sample No.</th>
+            @{
+                for (int alt = 1; alt <= ViewBag.AltNo; alt++)
+                {
+                    <th>Alt. No. @alt</th>
+                }
+            }
+        </tr>
+        @{
+            for (int no = 1; no <= ViewBag.MeasureNo; no++)
+            {
+                <tr>
+                    <td>@no</td>
+                    @{
+                        for (int alt = 0; alt < ViewBag.AltNo; alt++)
+                        {
+                            <td>
+                                <input id="@alt" name="@alt" type="number" step="any" class="form-control" />
+                            </td>
+                        }
+                    }
+                </tr>
+            }
+        }
+
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Calculate</button>
+    </div>
+</form>
+
+
+

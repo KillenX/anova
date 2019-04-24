@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+}
+
+<h2>Result</h2>
+<p>SSE= @ViewBag.SSE</p>
+<p>SSA= @ViewBag.SSA</p>
+<p>F-test= @ViewBag.Ftest</p>
+<p>Variance for contrast= @ViewBag.Sc</p>
+@{ 
+    if(ViewBag.Alt1!=null)
+    {
+        <p>Interval of trust for the contrast between @ViewBag.Alt1 and @ViewBag.Alt2 for alpha = @(1-ViewBag.Certainty) is (@ViewBag.LowLimit,@ViewBag.HighLimit)</p>
+    }
+}
+
+<h2>Which alternatives do you want to compare? [1 - @ViewBag.alts.Length]</h2>
+<form action=@Url.Action("Contrast","Home") method="post">
+    <table class="table">
+        <tr>
+            <th>Alternative #1</th>
+            <th>Alternative #2</th>
+            <th>Certainty [0-1]</th>
+        </tr>
+        <tr>
+            <td>
+                <input id="alt1" name="alt1" type="number" value="@ViewBag.Alt1" class="form-control" />
+            </td>
+            <td>
+                <input id="alt2" name="alt2" type="number" value="@ViewBag.Alt2" class="form-control" />
+            </td>
+            <td>
+                <input id="certainty" name="certainty" type="number"  value="@ViewBag.Certainty"step="any" class="form-control" />
+            </td>
+        </tr>
+    </table>
+    <div class="form-group">
+        <button type="submit" class="btn btn-default">Calculate</button>
+    </div>
+    <div>
+        <input id="sse" name="sse" type="hidden" value="@ViewBag.SSE" class="form-control" />
+        <input id="ssa" name="ssa" type="hidden" value="@ViewBag.SSA" class="form-control" />
+        <input id="Ftest" name="ftest" type="hidden" value="@ViewBag.Ftest" class="form-control" />
+        <input id="Sc" name="Sc" type="hidden" value="@ViewBag.Sc" class="form-control" />
+        <input id="n" name="n" type="hidden" value="@ViewBag.n" class="form-control" />
+        <input id="k" name="k" type="hidden" value="@ViewBag.k" class="form-control" />
+        <input id="alts" name="alts" type="hidden" value="@string.Join(",",ViewBag.alts)" class="form-control" />
+    </div>
+</form>
+
+
